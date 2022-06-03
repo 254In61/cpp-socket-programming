@@ -5,12 +5,19 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h> 
-#include <sys/socket.h>
+#include <sys/socket.h> // Include this header file for using socket feature in the code
 #include <netinet/in.h>
 #include <arpa/inet.h>  // Library having inet_ntoa
 #include <string>
 #include <ctime>
 #include <iostream>
+
+/*
+NOTE: For socket programming in Linux/UNIX based compilers, usage of ‘sys/socket.h’ is recommended. 
+To run it on Windows OS, usage of WinShock.h is mandatory. 
+Also, you can use Cygwin to run these programs on Windows OS
+https://www.educba.com/socket-programming-in-c-plus-plus/
+*/
 
 using namespace std;
 
@@ -32,6 +39,7 @@ int main(){
 
    
     // STEP 1 : Creating socket file descriptor using socket() function. This is the Master socket
+    // int socket ( int domain, int type, int protocol );
     // Returns a file descriptor for the socket or -1 on error.
 
     if ((master_sock = socket(AF_INET, SOCK_STREAM,0)) < 0){
@@ -55,6 +63,10 @@ int main(){
        - and the length of the address structure
      This bind() call will bind  the socket to the current IP address on port, portno
      
+    */
+    
+    /*
+    We can use Setsockopted if we need to reuse the address and port. It is optional.
     */
 
     server_addr.sin_family = AF_INET; // server byte order
@@ -88,6 +100,7 @@ int main(){
          - This listen() call tells the socket to listen to the incoming connections, and a subsequent accept() call actually accepts an incoming connection.
          - The listen() function places all incoming connection into a backlog queue until accept() call accepts the connection.
          - We set the maximum size for the backlog queue to 5.
+        The listen method is used to keep socket inactive when it waits for the client-server connection to establish.
         */
        
         if (listen(master_sock, 5) < 0) {
@@ -103,9 +116,10 @@ int main(){
         /*
         new_sock = accept(master_sock , struct sockaddr *remote_host, socklen_t addr_length)
 
-        This accept() function will write the connecting client's address info into the the address structure and the 
-        size of that structure is clilen.
-        
+        Accept method will have the very first connection request on the pending connection list in the socket. 
+        As it will create a new socket that is already connected and return a new file descriptor. 
+        This is the point of contact between server and client where your socket is ready for transferring data.
+
         The accept() returns a new socket file descriptor for the accepted connection.So, the original socket file 
         descriptor can continue to be used for accepting new connections while the new socker file descriptor is used 
         for communicating with the connected client.

@@ -29,7 +29,7 @@ Pre-requisite
 - NB: All this takes place in the /docker-test-environment directory.
 
 Step 1 : Upload your code to the git repository
-Step 2 : Edit the group_vars/all_vars.yml file to reflect your correct values.
+Step 2 : Edit the group_vars/all_vars.yml file to reflect your values.
 Step 3 : Fire off the test : $ ansible-playbook site.yml
 
 
