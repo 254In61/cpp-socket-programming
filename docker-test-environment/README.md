@@ -5,6 +5,8 @@ This is a self-sufficient testing environment that used Docker containers to sim
 
 Docker containers will pull code from the git repo and run the code meant for testing by remote users/clients.
 
+Once the containers complete the code run, they will be destroyed.
+
 ansible roles
 =============
 - create-container : Has tasks that create docker container and update the hosts file dynamically.
@@ -29,13 +31,6 @@ Pre-requisite
 Step 1 : Upload your code to the git repository
 Step 2 : Edit the group_vars/all_vars.yml file to reflect your correct values.
 Step 3 : Fire off the test : $ ansible-playbook site.yml
-
-
-Troubleshooting
-===============
-- There are cases the containers fail to run the code despite tests being OK on your dev environment.
-- Could be a number of issues but most importantly, check if the code is updated on the git repo.
-  Could be a pending merging.
 
 
 Author

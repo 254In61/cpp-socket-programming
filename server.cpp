@@ -9,6 +9,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>  // Library having inet_ntoa
 #include <string>
+#include <ctime>
+#include <iostream>
 
 using namespace std;
 
@@ -73,7 +75,7 @@ int main(){
     }
     
     else{
-        printf("Successfull bind of socket to port 5555 and address = localhost");
+        printf("\nSuccessfull bind of socket to port 5555 and address = server IP");
     }
 
     int i = 0;
@@ -94,7 +96,7 @@ int main(){
         }
     
         else{
-            printf("Now in listening state.....\n");
+            printf("\nNow in listening state.....\n");
         }
         
         // STEP 4 : Accepting incoming connections.
@@ -117,7 +119,12 @@ int main(){
         }
 
         else{
-            printf("\nconnection from %s port %d\n",inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
+            // current date/time based on current system
+            time_t now = time(0);
+            // convert now to string form
+            char* dt = ctime(&now);
+            cout<<"\nTIME : " << dt << endl;
+            printf("Connection from %s port %d\n",inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
         }
       
         /*

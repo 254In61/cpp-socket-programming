@@ -11,12 +11,19 @@ How to run
 - Confirm the IP address of your server end and edit the client.cpp accordingly.
 - Ensure the port chosen is a free one, available.
 - To run server :
-  g++ -o compiled-server server.cpp
+  $ g++ -o compiled-server server.cpp
   ./compiled-server
 
 - To run client :
-  g++ -o compiled-client client.cpp
+  $ g++ -o compiled-client client.cpp
   ./compiled-client
+
+
+Testing
+=======
+- Client.cpp is tested on docker containers.
+- Containers are dynamically created, code run on them, then destroyed.
+- To build image, check docker-test-environment/Dockerfile
 
 Author
 =======

@@ -435,3 +435,391 @@
 2022-05-23 00:40:48,219 p=2087478 u=amaseghe n=ansible | changed: [localhost] => (item=4)
 2022-05-23 00:40:48,228 p=2087478 u=amaseghe n=ansible | PLAY RECAP *********************************************************************************************************
 2022-05-23 00:40:48,229 p=2087478 u=amaseghe n=ansible | localhost                  : ok=7    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-03 21:19:58,094 p=3347741 u=amaseghe n=ansible | [WARNING]: Skipping callback plugin 'profile_tasks', unable to load
+
+2022-06-03 21:19:58,095 p=3347741 u=amaseghe n=ansible | PLAY [Run test on docker containers] ***********************************************************************
+2022-06-03 21:19:58,105 p=3347741 u=amaseghe n=ansible | TASK [Calling on the variables in group_vars directory] ****************************************************
+2022-06-03 21:19:58,116 p=3347741 u=amaseghe n=ansible | ok: [localhost]
+2022-06-03 21:19:58,118 p=3347741 u=amaseghe n=ansible | TASK [include_role : create-container] *********************************************************************
+2022-06-03 21:19:58,143 p=3347741 u=amaseghe n=ansible | TASK [create-container : Create 1st ubuntu container from the image my-docker-image:latest] ****************
+2022-06-03 21:19:58,871 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:19:59,469 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:20:00,077 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:20:00,674 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:20:00,682 p=3347741 u=amaseghe n=ansible | TASK [include_role : run-container] ************************************************************************
+2022-06-03 21:20:00,704 p=3347741 u=amaseghe n=ansible | TASK [run-container : Clone socket_programming_cpp into the docker containers] *****************************
+2022-06-03 21:20:07,003 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:20:13,251 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:20:19,511 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:20:25,929 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:20:25,933 p=3347741 u=amaseghe n=ansible | TASK [run-container : Compile the .cpp code] ***************************************************************
+2022-06-03 21:20:26,345 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:20:26,871 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:20:27,421 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:20:27,840 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:20:27,842 p=3347741 u=amaseghe n=ansible | TASK [run-container : Run the compiled binary file] ********************************************************
+2022-06-03 21:20:28,039 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:20:28,241 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:20:28,456 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:20:28,629 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:20:28,633 p=3347741 u=amaseghe n=ansible | TASK [run-container : debug] *******************************************************************************
+2022-06-03 21:20:28,648 p=3347741 u=amaseghe n=ansible | ok: [localhost] => {
+    "container_output": {
+        "changed": true,
+        "msg": "All items completed",
+        "results": [
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": "docker exec docker_1 ./compiled_client",
+                "delta": "0:00:00.058945",
+                "end": "2022-06-03 21:20:28.022764",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "docker exec docker_1 ./compiled_client",
+                        "_uses_shell": true,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": false
+                    }
+                },
+                "item": "1",
+                "msg": "",
+                "rc": 0,
+                "start": "2022-06-03 21:20:27.963819",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Socket created successfully.........\nConnection established with server.....\nMessage sent to server...\nFROM SERVER: How are you?",
+                "stdout_lines": [
+                    "Socket created successfully.........",
+                    "Connection established with server.....",
+                    "Message sent to server...",
+                    "FROM SERVER: How are you?"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": "docker exec docker_2 ./compiled_client",
+                "delta": "0:00:00.071004",
+                "end": "2022-06-03 21:20:28.221615",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "docker exec docker_2 ./compiled_client",
+                        "_uses_shell": true,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": false
+                    }
+                },
+                "item": "2",
+                "msg": "",
+                "rc": 0,
+                "start": "2022-06-03 21:20:28.150611",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Socket created successfully.........\nConnection established with server.....\nMessage sent to server...\nFROM SERVER: How are you?",
+                "stdout_lines": [
+                    "Socket created successfully.........",
+                    "Connection established with server.....",
+                    "Message sent to server...",
+                    "FROM SERVER: How are you?"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": "docker exec docker_3 ./compiled_client",
+                "delta": "0:00:00.076940",
+                "end": "2022-06-03 21:20:28.437049",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "docker exec docker_3 ./compiled_client",
+                        "_uses_shell": true,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": false
+                    }
+                },
+                "item": "3",
+                "msg": "",
+                "rc": 0,
+                "start": "2022-06-03 21:20:28.360109",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Socket created successfully.........\nConnection established with server.....\nMessage sent to server...\nFROM SERVER: How are you?",
+                "stdout_lines": [
+                    "Socket created successfully.........",
+                    "Connection established with server.....",
+                    "Message sent to server...",
+                    "FROM SERVER: How are you?"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": "docker exec docker_4 ./compiled_client",
+                "delta": "0:00:00.049999",
+                "end": "2022-06-03 21:20:28.615430",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "docker exec docker_4 ./compiled_client",
+                        "_uses_shell": true,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": false
+                    }
+                },
+                "item": "4",
+                "msg": "",
+                "rc": 0,
+                "start": "2022-06-03 21:20:28.565431",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Socket created successfully.........\nConnection established with server.....\nMessage sent to server...\nFROM SERVER: How are you?",
+                "stdout_lines": [
+                    "Socket created successfully.........",
+                    "Connection established with server.....",
+                    "Message sent to server...",
+                    "FROM SERVER: How are you?"
+                ]
+            }
+        ],
+        "skipped": false
+    }
+}
+2022-06-03 21:20:28,652 p=3347741 u=amaseghe n=ansible | TASK [include_role : destroy-container] ********************************************************************
+2022-06-03 21:20:28,675 p=3347741 u=amaseghe n=ansible | TASK [destroy-container : Stop docker containers] **********************************************************
+2022-06-03 21:20:29,176 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:20:29,658 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:20:30,200 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:20:30,746 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:20:30,751 p=3347741 u=amaseghe n=ansible | TASK [destroy-container : Remove docker containers] ********************************************************
+2022-06-03 21:20:31,333 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:20:31,883 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:20:32,420 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:20:32,991 p=3347741 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:20:32,998 p=3347741 u=amaseghe n=ansible | PLAY RECAP *************************************************************************************************
+2022-06-03 21:20:32,998 p=3347741 u=amaseghe n=ansible | localhost                  : ok=8    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-03 21:40:03,258 p=3352475 u=amaseghe n=ansible | [WARNING]: Skipping callback plugin 'profile_tasks', unable to load
+
+2022-06-03 21:40:03,259 p=3352475 u=amaseghe n=ansible | PLAY [Run test on docker containers] ***********************************************************************
+2022-06-03 21:40:03,268 p=3352475 u=amaseghe n=ansible | TASK [Calling on the variables in group_vars directory] ****************************************************
+2022-06-03 21:40:03,278 p=3352475 u=amaseghe n=ansible | ok: [localhost]
+2022-06-03 21:40:03,282 p=3352475 u=amaseghe n=ansible | TASK [include_role : create-container] *********************************************************************
+2022-06-03 21:40:03,303 p=3352475 u=amaseghe n=ansible | TASK [create-container : Create 1st ubuntu container from the image my-docker-image:latest] ****************
+2022-06-03 21:40:04,154 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:40:04,855 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:40:05,607 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:40:06,745 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:40:06,760 p=3352475 u=amaseghe n=ansible | TASK [include_role : run-container] ************************************************************************
+2022-06-03 21:40:06,792 p=3352475 u=amaseghe n=ansible | TASK [run-container : git socket_programming_cpp into the docker containers] *******************************
+2022-06-03 21:40:14,215 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:40:20,364 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:40:26,593 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:40:32,747 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:40:32,750 p=3352475 u=amaseghe n=ansible | TASK [run-container : Compile the .cpp code] ***************************************************************
+2022-06-03 21:40:33,241 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:40:33,728 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:40:34,198 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:40:34,717 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:40:34,723 p=3352475 u=amaseghe n=ansible | TASK [run-container : Run the compiled binary file] ********************************************************
+2022-06-03 21:40:34,963 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:40:35,182 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:40:35,410 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:40:35,618 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:40:35,625 p=3352475 u=amaseghe n=ansible | TASK [run-container : debug] *******************************************************************************
+2022-06-03 21:40:35,651 p=3352475 u=amaseghe n=ansible | ok: [localhost] => {
+    "container_output": {
+        "changed": true,
+        "msg": "All items completed",
+        "results": [
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": "docker exec docker_1 ./compiled_client",
+                "delta": "0:00:00.068577",
+                "end": "2022-06-03 21:40:34.940880",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "docker exec docker_1 ./compiled_client",
+                        "_uses_shell": true,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": false
+                    }
+                },
+                "item": "1",
+                "msg": "",
+                "rc": 0,
+                "start": "2022-06-03 21:40:34.872303",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Socket created successfully.........\nConnection established with server.....\nMessage sent to server...\nFROM SERVER: How are you?",
+                "stdout_lines": [
+                    "Socket created successfully.........",
+                    "Connection established with server.....",
+                    "Message sent to server...",
+                    "FROM SERVER: How are you?"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": "docker exec docker_2 ./compiled_client",
+                "delta": "0:00:00.075085",
+                "end": "2022-06-03 21:40:35.161884",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "docker exec docker_2 ./compiled_client",
+                        "_uses_shell": true,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": false
+                    }
+                },
+                "item": "2",
+                "msg": "",
+                "rc": 0,
+                "start": "2022-06-03 21:40:35.086799",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Socket created successfully.........\nConnection established with server.....\nMessage sent to server...\nFROM SERVER: How are you?",
+                "stdout_lines": [
+                    "Socket created successfully.........",
+                    "Connection established with server.....",
+                    "Message sent to server...",
+                    "FROM SERVER: How are you?"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": "docker exec docker_3 ./compiled_client",
+                "delta": "0:00:00.081295",
+                "end": "2022-06-03 21:40:35.391565",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "docker exec docker_3 ./compiled_client",
+                        "_uses_shell": true,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": false
+                    }
+                },
+                "item": "3",
+                "msg": "",
+                "rc": 0,
+                "start": "2022-06-03 21:40:35.310270",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Socket created successfully.........\nConnection established with server.....\nMessage sent to server...\nFROM SERVER: How are you?",
+                "stdout_lines": [
+                    "Socket created successfully.........",
+                    "Connection established with server.....",
+                    "Message sent to server...",
+                    "FROM SERVER: How are you?"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": "docker exec docker_4 ./compiled_client",
+                "delta": "0:00:00.062770",
+                "end": "2022-06-03 21:40:35.597967",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "docker exec docker_4 ./compiled_client",
+                        "_uses_shell": true,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": false
+                    }
+                },
+                "item": "4",
+                "msg": "",
+                "rc": 0,
+                "start": "2022-06-03 21:40:35.535197",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Socket created successfully.........\nConnection established with server.....\nMessage sent to server...\nFROM SERVER: How are you?",
+                "stdout_lines": [
+                    "Socket created successfully.........",
+                    "Connection established with server.....",
+                    "Message sent to server...",
+                    "FROM SERVER: How are you?"
+                ]
+            }
+        ],
+        "skipped": false
+    }
+}
+2022-06-03 21:40:35,659 p=3352475 u=amaseghe n=ansible | TASK [include_role : destroy-container] ********************************************************************
+2022-06-03 21:40:35,684 p=3352475 u=amaseghe n=ansible | TASK [destroy-container : Stop docker containers] **********************************************************
+2022-06-03 21:40:36,306 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:40:36,862 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:40:37,448 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:40:38,039 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:40:38,045 p=3352475 u=amaseghe n=ansible | TASK [destroy-container : Remove docker containers] ********************************************************
+2022-06-03 21:40:38,709 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=1)
+2022-06-03 21:40:39,375 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=2)
+2022-06-03 21:40:40,029 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=3)
+2022-06-03 21:40:40,700 p=3352475 u=amaseghe n=ansible | changed: [localhost] => (item=4)
+2022-06-03 21:40:40,709 p=3352475 u=amaseghe n=ansible | PLAY RECAP *************************************************************************************************
+2022-06-03 21:40:40,710 p=3352475 u=amaseghe n=ansible | localhost                  : ok=8    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
