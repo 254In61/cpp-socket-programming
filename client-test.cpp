@@ -1,5 +1,6 @@
 
 // Client side C/C++ program to demonstrate Socket programming
+// Copy of client.cpp with only the server address changed. Server will be the Jenkins Server ip.
 #include <arpa/inet.h> 
 #include <string.h>
 #include <unistd.h> 
@@ -53,7 +54,7 @@ int main()
     addr.sin_family = AF_INET; 
     addr.sin_port = htons(PORT);  
     
-    if (inet_pton(AF_INET,"192.168.1.111", &addr.sin_addr)<= 0) {
+    if (inet_pton(AF_INET,"192.168.1.90", &addr.sin_addr)<= 0) {
         cout<< " ERROR. IP could be invalid or not supported"<< endl;
         return -1;
     }
