@@ -33,46 +33,14 @@ void Chat::messaging(int new_sock){
 
 }
        
-       
-       
-//         read(client_sock, buffer, 1024);
-
-//          /*
-//         $ man inet_ntoa  ... for more details.
-
-//         The inet_ntoa() function converts the Internet host address in, given  in  net‐
-//         work  byte  order,  to a string in IPv4 dotted-decimal notation.
-//         */
-//         bzero(buffer,256);
-//         n = read(new_sock, buffer, 1024);
-//         printf("%s\n", buffer);
-
-        
-
-//         // closing the connected socket
-       
-
-//         // closing the listening socket. If I don't want it to be constantly up??
-//         // shutdown(master_sock, SHUT_RDWR);
-
-// };
-
-
 int main(){
     int master_sock, new_sock; // declare variables for file descriptor(socket), new socket formed and port number.
     struct sockaddr_in server_addr,client_addr; // Objects out of struct sockaddr_in
     socklen_t cli_addr_len; // obj out of struct socklen_t for connecting client address length.
-    // char buffer[256]; // What for?
-    
-    // string msg_to_client;
-    
-    // int n; // variable to take incoming transmission from client
-
    
     // Create socket file descriptor using socket() function. This is the Master socket
     master_sock = socket(AF_INET, SOCK_STREAM,0);
     if (master_sock < 0){ 
-       // Returns a file descriptor for the socket or -1 on error.
        cout<< "ERROR. Socket creation failed"<< endl;
        exit(EXIT_FAILURE);
        }
@@ -83,9 +51,9 @@ int main(){
 
     // Bind created socket to the server IP address and port number.
     
-    server_addr.sin_family = AF_INET; // server byte order
-    server_addr.sin_addr.s_addr = INADDR_ANY; // automatically be filled with current host's IP address.
-    server_addr.sin_port = htons(PORT); // convert short integer value for port must be converted into network byte order
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_addr.s_addr = INADDR_ANY;
+    server_addr.sin_port = htons(PORT); 
 
     if (bind(master_sock, (struct sockaddr*)&server_addr, sizeof(server_addr))< 0){
         cout<< "ERROR. Socket bind fail"<< endl;
@@ -130,8 +98,6 @@ int main(){
             // At this point , the processing of requests to be handled by classes.
             // Class could be about DB querries or any other process.
             
-            // bzero(buffer,256);
-            // n = read(new_sock, buffer, 1024);
             Chat myChat;
             myChat.messaging(new_sock);
             close(new_sock);
