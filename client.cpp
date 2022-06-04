@@ -53,20 +53,13 @@ int main()
     addr.sin_family = AF_INET; 
     addr.sin_port = htons(PORT);  
     
-    if (inet_pton(AF_INET,"192.168.1.111", &addr.sin_addr)<= 0) {
+    // 192.168.1.90 is my server. You can edit it to fit your environment
+    if (inet_pton(AF_INET,"192.168.1.90", &addr.sin_addr)<= 0) {
         cout<< " ERROR. IP could be invalid or not supported"<< endl;
         return -1;
     }
     
-    /*
-    int connect(int fd, struct sockaddr *remote_host, socklen_t addr_length)
-    - Connects a socket (described by file descriptor fd) to a remote host.
-    - Returns 0 on success and -1 on error. Until the return is back i.e 0 or -1 , nothing else happens, hence called 'blocking call'.
-    - The connect() system call connects the socket referred to by the file descriptor to the address specified by addr. 
-    - Server’s address and port is specified in addr.
-    
-    */
-
+   
     int create_connection = connect(client_sock, (struct sockaddr*)&addr, sizeof(addr));
     if (create_connection < 0) {
         cout << "ERROR. Connection creation failed"<< endl;
@@ -78,7 +71,6 @@ int main()
 
     }
 
-    // = 0, valread, client_fd;
    
     chat_function(client_sock);
     
