@@ -2,7 +2,7 @@
 # Run test on the docker containers
 # When image was created. ref Dockerfile, git and python3 were installed as a layer ontop
 
-- name: git {{ git_repo }} into the docker containers
+- name: git clone https://github.com/254In61/{{ git_repo }}.git
   shell: "docker exec {{ container_common_name }}_{{ item }} git clone https://github.com/254In61/{{ git_repo }}.git"
   with_sequence: count={{ number_of_containers }}
   # Using this approach to run everything under docker exec and not have to ssh on the docker containers like usual Ansible code.
