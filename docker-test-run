@@ -1,0 +1,75 @@
+#!/usr/bin/bash
+# Automating run of docker hosts tests
+
+# Declare variables
+docker_image=my-docker-image:latest
+git_repo=socket_programming_cpp
+containers='docker_1 docker_2 docker_3 docker_4'
+source_code=client.cpp
+compiled_binary=compiled_client
+
+# Build and start containers
+echo " "
+echo "============== BUILDING CONTAINERS =================="
+for value in $containers
+do 
+  echo "Creation and starting $value"
+  if [[ $value == docker_1 ]]
+  then
+     port_forward=8081:80
+
+  elif [[ $value == docker_2 ]]
+  then
+     port_forward=8082:80
+
+  elif [[ $value == docker_3 ]]
+  then
+     port_forward=8083:80
+
+  elif [[ $value == docker_4 ]]
+  then
+     port_forward=8084:80
+  
+  else
+     pass
+  fi
+
+  docker run -d --name $value -e TZ=UTC -p $port_forward $docker_image
+  echo "Container running .. "
+  echo " "
+done
+
+
+# List the built containers
+echo " "
+echo "============== LIST CONTAINERS =================="
+echo " "
+docker ps
+
+# Run tasks on containers
+echo " "
+echo "============== RUN TASKS ON CONTAINERS =================="
+for value in $containers
+do
+   # running of docker-exec commands in the containers
+   # docker exec docker_1 git clone https://github.com/254In61/socket_programming_cpp.git
+   # docker exec docker_1 g++ -o socket_programming_cpp/compiled_client socket_programming_cpp/client.cpp && socket_programming_cpp/compiled_client
+
+   echo " "
+   echo "***CONTAINER NAME : $value "
+   docker exec $value git clone https://github.com/254In61/$git_repo.git && echo "Git cloning of code into container successfull.."
+   docker exec $value g++ -o $git_repo/$compiled_binary $git_repo/$source_code && echo "Compiling of code in container successfull"
+   docker exec $value $git_repo/$compiled_binary && echo "Run of code in container successfull"
+   echo " "
+
+done
+
+# Stop and delete containers
+echo " "
+echo "============== STOP AND DELETING OF CONTAINERS =================="
+for value in $containers
+do 
+  echo " "
+  echo "stopping & deleting container $value ...."
+  docker stop $value && docker rm $value
+done

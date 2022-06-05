@@ -6,17 +6,17 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'g++ -o compiled-server server.cpp && ./compiled-server' 
+                sh 'g++ -o compiled-client client.cpp && ./compiled-client' 
             }
         }
         stage('Test'){
             steps {
-                sh 'g++ -o compiled-client client.cpp && ./compiled-client'
+                sh './docker-ansible-test-run'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'ansible-playbook site.yml'
+                sh './docker-test-run'
             }
         }
     }
