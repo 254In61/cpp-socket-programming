@@ -13,7 +13,7 @@ Ensure the port chosen is a free one, available.
 
 To run server : $ g++ -o compiled-server server.cpp && ./compiled-server
 
-To run client : $ 
+To run client : $ g++ -o compiled-client client.cpp && ./compiled-client
 
 Local dev testing
 =================
