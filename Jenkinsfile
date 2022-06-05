@@ -11,12 +11,12 @@ pipeline {
         }
         stage('Test'){
             steps {
-                sh 'ansible-playbook site.yml'
+                sh './docker-ansible-test-run'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'ansible-playbook site.yml'
+                sh './docker-ansible-test-run'
             }
         }
     }
