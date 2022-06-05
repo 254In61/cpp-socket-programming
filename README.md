@@ -13,7 +13,7 @@ Ensure the port chosen is a free one, available.
 
 To run server : $ g++ -o compiled-server server.cpp && ./compiled-server
 
-To run client : $ g++ -o compiled-client client.cpp && ./compiled-client
+To run client : $ 
 
 Local dev testing
 =================
@@ -28,6 +28,8 @@ CI/CD
 - Jenkins is used for the CI/CD process
 - **Unittesting of classes and functions is yet to be developed.
 - Unittest-server build starts first.
+- ** server has to be started and left in up state for the next steps to work.
+     currently running it with a shell script from home directory **
 - Unittest-client build comes second after unittest-server succeeds.
 - end-to-end integration-testing is done using ansible playbook, site.yml where client code is run from 
   docker containers to simulate different clients communicating with server.
