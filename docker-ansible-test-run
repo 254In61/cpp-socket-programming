@@ -1,4 +1,0 @@
-#!/usr/bin/bash
-# Automating run of docker hosts tests
-
-ansible-playbook site.yml

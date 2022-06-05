@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh './docker-ansible-test-run'
+                sh './docker-test-run'
             }
         }
     }

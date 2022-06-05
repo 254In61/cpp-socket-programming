@@ -23,16 +23,21 @@ Step 3 : Build the docker image by following instructions on Dockerfile
 Step 4 : Fire off the test : $ ansible-playbook site.yml
 
 
-CI/CD
-=====
-- Jenkins is used for the CI/CD process
-- **Unittesting of classes and functions is yet to be developed.
-- Unittest-server build starts first.
+CI/CD [ Jenkins ]
+==================
+- Pipeline process declared in Jenkinsfile which is part of the repo.
 - ** server has to be started and left in up state for the next steps to work.
-     currently running it with a shell script from home directory **
-- Unittest-client build comes second after unittest-server succeeds.
-- end-to-end integration-testing is done using ansible playbook, site.yml where client code is run from 
-  docker containers to simulate different clients communicating with server.
+     currently running it with a shell script in home directory **
+- **Unittesting of classes and functions is yet to be developed.
+- Unittest-client build starts first.
+- end-to-end integration-testing is done using docker containers to simulate different clients communicating with server.
+- Yet to decide on the prod stage so just copied the Test stage in Jenkinsfile
+
+ISSUES
+======
+- Jenkins pipeline not running "ansible-playbook" .. The command runs when done from the console.
+ERROR =  'ansible-playbook: command not found'
+- Using direct shell script to run the docker containers instead of Ansible script, site.yml
 
 Author
 ======
