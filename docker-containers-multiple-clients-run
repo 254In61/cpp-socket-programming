@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+# Automating run of docker hosts tests
+
+# Declare variables
+docker_image=my-docker-image:latest
+git_repo=socket_programming_cpp
+client_containers='docker_2 docker_3 docker_4 docker_5'
+source_code=client.cpp
+compiled_binary=compiled_client
+
+# Run tasks on containers
+echo " "
+echo "============== RUN TASKS ON CONTAINERS =================="
+for value in $containers
+do
+   # running of docker-exec commands in the containers
+   # docker exec docker_2 git clone https://github.com/254In61/socket_programming_cpp.git
+   # docker exec docker_2 g++ -o socket_programming_cpp/compiled_client socket_programming_cpp/client.cpp && socket_programming_cpp/compiled_client
+
+   echo " "
+   echo "***CONTAINER NAME : $value "
+   docker exec $value git clone https://github.com/254In61/$git_repo.git && echo "Git cloning of code into container successfull.."
+   docker exec $value g++ -o $git_repo/$compiled_binary $git_repo/$source_code && echo "Compiling of code in container successfull"
+   docker exec $value $git_repo/$compiled_binary && echo "Run of code in container successfull"
+   echo " "
+
+done
+

@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+# Automating run of docker hosts tests
+
+# Declare variables
+containers='docker_1 docker_2 docker_3 docker_4 docker_5'
+
+# Stop and delete containers
+echo " "
+echo "============== STOP AND DELETING OF CONTAINERS =================="
+for value in $containers
+do 
+  echo " "
+  echo "stopping & deleting container $value ...."
+  docker stop $value && docker rm $value
+done

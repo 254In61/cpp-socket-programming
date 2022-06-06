@@ -1,0 +1,52 @@
+#!/usr/bin/bash
+# Automating run of docker hosts tests
+
+# Build docker image with cpp g++ and git
+echo " "
+echo "============== BUILDING DOCKER IMAGE =================="
+docker build -t my-docker-image .
+
+
+# Declare variables
+docker_image=my-docker-image:latest
+git_repo=socket_programming_cpp
+containers='docker_1 docker_2 docker_3 docker_4 docker_5'
+source_code=client.cpp
+compiled_binary=compiled_client
+
+
+# Build and start containers
+echo " "
+echo "============== BUILDING CONTAINERS =================="
+for value in $containers
+do 
+  echo "Creation and starting $value"
+  if [[ $value == docker_1 ]]
+  then
+     port_forward=8081:80
+
+  elif [[ $value == docker_2 ]]
+  then
+     port_forward=8082:80
+
+  elif [[ $value == docker_3 ]]
+  then
+     port_forward=8083:80
+
+  elif [[ $value == docker_4 ]]
+  then
+     port_forward=8084:80
+
+  elif [[ $value == docker_5 ]]
+  then
+     port_forward=8084:80
+  
+  else
+     pass
+  fi
+
+  docker run -d --name $value -e TZ=UTC -p $port_forward $docker_image
+  echo "Container running .. "
+  echo " "
+done
+
