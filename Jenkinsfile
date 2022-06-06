@@ -59,5 +59,5 @@ pipeline {
     //             sh './docker-test-run'
     //         }
     //     }
-    // }
+    }
 }
