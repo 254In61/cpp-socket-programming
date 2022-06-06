@@ -53,9 +53,8 @@ int main()
     addr.sin_family = AF_INET; 
     addr.sin_port = htons(PORT);  
     
-    // 172.17.0.2 is the assumed IP of the docker_2 container which will be the server.
-    // Refference to the docker files
-    if (inet_pton(AF_INET,"172.17.0.2", &addr.sin_addr)<= 0) {
+    // 192.168.1.90 is the server. IP can be changed as per the needs
+    if (inet_pton(AF_INET,"192.168.1.90", &addr.sin_addr)<= 0) {
         cout<< " ERROR. IP could be invalid or not supported"<< endl;
         return -1;
     }
