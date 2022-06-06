@@ -4,7 +4,7 @@
 # Declare variables
 docker_image=my-docker-image:latest
 git_repo=socket_programming_cpp
-containers='docker_2 docker_3 docker_4 docker_5'
+containers='docker_2'
 source_code=client.cpp
 compiled_binary=compiled_client
 
@@ -25,14 +25,4 @@ do
    docker exec $value $git_repo/$compiled_binary && echo "Run of code in container successfull"
    echo " "
 
-done
-
-# Stop and delete containers
-echo " "
-echo "============== STOP AND DELETING OF CONTAINERS =================="
-for value in $containers
-do 
-  echo " "
-  echo "stopping & deleting container $value ...."
-  docker stop $value && docker rm $value
 done

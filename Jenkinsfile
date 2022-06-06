@@ -9,7 +9,6 @@
 6) junit : another Pipeline step (provided by the JUnit plugin) for aggregating test reports.
 
 ** Pipeline made as simple as possible. To make it more complex & robust : https://www.jenkins.io/doc/book/pipeline/syntax/
-Assumption: Docker IPs will be the default 172.17.0.0/16, so, docker_1 will always be 172.17.0.1
 */
 
 pipeline { 
@@ -59,5 +58,5 @@ pipeline {
     //             sh './docker-test-run'
     //         }
     //     }
-    // }
+    }
 }
