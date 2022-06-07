@@ -14,7 +14,7 @@ compiled_binary=compiled_server
 # Build and start containers
 # Run tasks on docker_1 as server
 echo " "
-echo "============== RUN TASKS ON CONTAINERS =================="
+echo "============== UNITTEST SERVER RUN =================="
 for value in $containers
 do
    # running of docker-exec commands in the containers

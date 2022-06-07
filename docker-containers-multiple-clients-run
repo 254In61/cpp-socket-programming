@@ -10,7 +10,7 @@ compiled_binary=compiled_client
 
 # Run tasks on containers
 echo " "
-echo "============== RUN TASKS ON CONTAINERS =================="
+echo "============== INTEGRATION TESTS ON MULTIPLE CLIENTS REQUEST =================="
 for value in $containers
 do
    # running of docker-exec commands in the containers
